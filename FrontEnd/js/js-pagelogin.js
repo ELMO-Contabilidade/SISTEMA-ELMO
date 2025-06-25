@@ -1,27 +1,21 @@
-// FrontEnd/js/js-pagelogin.js
-async function logar (e) {
+
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("toggle-password");
+
+togglePassword.addEventListener("click", () => {
+  const isHidden = passwordInput.type === "password";
+  passwordInput.type = isHidden ? "text" : "password";
+  togglePassword.textContent = isHidden ? "visibility_off" : "visibility";
+});
+
+
+// Abrir modal ao clicar no link
+document.getElementById("forgot-link").addEventListener("click", (e) => {
   e.preventDefault();
+  document.getElementById("forgot-modal").style.display = "block";
+});
 
-  const email = document.getElementById('email').value;
-  const senha = document.getElementById('password').value;
-
-  try {
-    const response = await fetch('http://localhost:3000/api/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, senha })
-    });
-
-    const data = await response.json();
-
-    if (data.status === 'sucesso') {
-      alert(`Bem-vindo, ${data.nome}`);
-      window.location.href = 'modulos.html'; // ou a próxima página
-    } else {
-      alert('E-mail ou senha inválidos!');
-    }
-  } catch (error) {
-    console.error('Erro no login:', error);
-    alert('Erro ao conectar ao servidor.');
-  }
-}
+// Fechar modal ao clicar no X
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.getElementById("forgot-modal").style.display = "none";
+});
