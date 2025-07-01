@@ -1,28 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/FrontEnd/img/elmoicon.png" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>ELMO | Manager</title>
-    <link rel="stylesheet" href="/FrontEnd/css/processos/painel.css" />
-  </head>
-  <body>
-    <header>
-      <h1>GESTÃO DE PROCESSOS</h1>
-      <nav class="sidebar">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="/FrontEnd/img/logoelmo.png" alt="logo">
-                </span>
-            </div> 
-            <span id="ocultar-sidebar" class="material-icons ocultar-sidebar">
-              arrow_back_ios
-            </span>
-        </header>
-      </nav>
-    </header>
-    </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/FrontEnd/img/elmoicon.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>ELMO | Manager</title>
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/FrontEnd/css/processos/painel.css" />
+</head>
+<body>
+
+  <!-- cabeçalho do sistema -->
+  <header class="top-header">
+    <h1>GESTÃO DE PROCESSOS</h1>
+  </header>
+
+  <!-- sidebar -->
+  <nav class="sidebar close">
+    <!-- bloco da logo + botão -->
+    <div class="logo-box">
+      <span class="image">
+        <img id="logo-img" src="/FrontEnd/img/logoelmo.png" alt="logo">
+      </span>
+
+      <span id="ocultar-sidebar" class="material-icons ocultar-sidebar">
+        chevron_left
+      </span>
+    </div>
+
+    <!-- navegação principal -->
+    <ul class="menu">
+      <li><a href="#"><span class="material-icons">desktop_windows</span><span class="link-text">Painel</span></a></li>
+      <li><a href="#"><span class="material-icons">manage_search</span><span class="link-text">Consulta</span></a></li>
+      <li><a href="#"><span class="material-icons">article</span><span class="link-text">P.T.</span></a></li>
+      <li><a href="#"><span class="material-icons">date_range</span><span class="link-text">Validade.</span></a></li>
+      <li><a href="#"><span class="material-icons">fact_check</span><span class="link-text">Tarefas</span></a></li>
+      <li><a href="#"><span class="material-icons">person_add</span><span class="link-text">Registro</span></a></li>
+      <li><a href="#"><span class="material-icons">calculate</span><span class="link-text">Percapta</span></a></li>
+      <li><a href="#"><span class="material-icons">account_box</span><span class="link-text">Clientes</span></a></li>
+      <li><a href="#"><span class="material-icons">lock_open</span><span class="link-text">Acesso Sei</span></a></li>
+      <li><a href="#"><span class="material-icons">checklist</span><span class="link-text">CheckList</span></a></li>
+      <li><a href="#"><span class="material-icons">assignment_add</span><span class="link-text">Protocolo</span></a></li>
+    </ul>
+
+    <!-- empurra logout para o rodapé -->
+    <div class="spacer"></div>
+
+    <ul class="logout">
+      <li><a href="/FrontEnd/modulos.html"><span class="material-icons">logout</span><span class="link-text">Logout</span></a></li>
+    </ul>
+  </nav>
+  <!-- LAYOUT DO CAMPOS DE ATUALIZAÇÃO DO USUARIO -->
+  <section class="top-actions">
+    <div class="visualizacao">
+      <label for="visualizacao">SELECIONE A VISUALIZAÇÃO</label>
+      <select id="visualizacao">
+        <option>SOLICITAÇÃO</option>
+      </select>
+    </div>
+    <div class="botoes">
+      <button class="btn vermelha"><i class="fa fa-floppy-disk"></i> REGISTRAR</button>
+      <button class="btn vermelha"><i class="fa fa-magnifying-glass"></i> PESQUISAR</button>
+      <button class="btn vermelha"><i class="fa fa-pen"></i> ATUALIZAR</button>
+    </div>
+  </section>
+
+  <main>
+    <div class="form-container">
+      <div class="linha">
+        <div class="campo"><label>ID</label><input type="text"></div>
+        <div class="campo"><label>DATA</label><input type="date"></div>
+        <div class="campo"><label>EMAIL</label><input type="email"></div>
+        <div class="campo"><label>URGENCIA</label><select><option>Alta</option></select></div>
+      </div>
+      <div class="linha">
+        <div class="campo grande"><label>DESCRIÇÃO</label><input type="text"></div>
+        <div class="campo"><label>STATUS</label><select><option>Em análise</option></select></div>
+      </div>
+      <div class="linha">
+        <div class="campo"><label>PAINEL</label><input type="text"></div>
+        <div class="campo grande"><label>OBSERVAÇÃO</label><textarea rows="4"></textarea></div>
+      </div>
+      <div class="linha">
+        <div class="campo"><label>CONCLUSÃO</label><input type="date" value=""></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- script principal -->
+  <script type="module" src="/FrontEnd/js/processos/painelJs.js"></script>
+</body>
 </html>

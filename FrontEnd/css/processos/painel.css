@@ -1,74 +1,254 @@
-/* css/processos/painel.css */
-
+/* ========== CONFIGURAÇÃO BASE ========== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-body {
-    font-family: 'Poppins', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f0f4f9;
-    background-size: cover;
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  font-family: 'Poppins', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f0f4f9;
+  background-size: cover;
 }
 
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px 0; /* Ajuste de padding */
+/* ===== Cabeçalho superior ===== */
+.top-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 0;
 }
 
 h1 {
-    font-size: 45px;
-    font-weight: bold;
-    color: #b92535;
-    margin: 0;
+  font-size: 55px;
+  font-weight: bold;
+  color: #b92535;
+  margin: 0;
 }
 
-.sidebar .text{
-    font-size: 25px;
-    font-weight: 500;
-}
-
-.sidebar .image{
-    min-width: 50px;
-    display: flex;
-    align-items: center;
-}
+/* ===== Sidebar ===== */
 .sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
-    background-color: #ffffff;    
-    padding: 10px 14px;
-
-}    
-
-.sidebar .image-text img {
-    width: 75%;
-    align-items: center;
-    margin-left: 30px;
+  position:fixed;
+  top:0; left:0; bottom:0;
+  width:250px;
+  background:#fff;
+  padding:10px 14px;
+  display:flex;
+  flex-direction:column;
+  transition:width .3s;
 }
 
-.ocultar-sidebar {
-    position: absolute;
-    top: 50%;
-    right: -15px; /* ajuste fino para posição horizontal */
-    transform: translateY(-50%);
-    height: 35px;
-    width: 35px;
-    background-color: #b92535;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 18px; /* ajuste fino do ícone */
+/* logo + botão */
+.logo-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-left: 25px;
+  margin-top: 15px;
+  margin-bottom:70px;
+  position:relative;
+}
+.sidebar .image img{ width:90%; }
+
+/* botão de recolher */
+.ocultar-sidebar{
+  position:absolute;
+  top:50%; right:-30px;
+  transform:translateY(-50%);
+  width:35px; height:35px;
+  border-radius:50%;
+  background:#b92535;
+  color:#fff;
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:transform .3s;
+}
+.ocultar-sidebar.rotate{ transform:translateY(-50%) rotate(180deg); }
+
+/* ===== Links ===== */
+.menu, .logout{ list-style:none; }
+.menu li+li    { margin-top:8px; }
+
+.sidebar a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:16px;
+  color:#4f4f4f;
+  padding:7px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  transition:background .2s;
+}
+.sidebar a:hover{ 
+  background:#f2f3f7; 
+}
+
+/* texto do link embrulhado em span */
+.link-text{ transition:opacity .3s ease; }
+
+/* ===== Espaçador para empurrar logout ===== */
+.spacer{ flex-grow:1; }
+
+/* ===== Estado recolhido ===== */
+.sidebar.close{ width:85px; }
+
+.sidebar.close .image img{
+  width:38px;
+  margin:0;
+}
+
+.sidebar.close a{
+  justify-content:center;
+  padding:12px 0;
+}
+.sidebar.close .link-text{
+  opacity:0;
+  pointer-events:none;
+}
+
+/* ==== LISTAS ==== */
+.menu,
+.logout {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li + li {
+  margin-top: 8px;
+}
+
+.logout {
+  margin-top: 90px;
+}
+
+/* ==== ANIMAÇÕES GERAIS ==== */
+.sidebar,
+.sidebar .image-text img,
+.sidebar a .material-icons + * {
+  transition: all 0.3s ease;
+}
+
+/* ==== MODO FECHADO (COLAPSADO) ==== */
+.sidebar.close {
+  width: 85px;
+  padding: 10px 0; /* remove padding lateral */
+}
+
+.sidebar.close a {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.sidebar.close a .material-icons + * {
+  display: none; /* remove texto do menu */
+}
+
+.sidebar.close .image-text img {
+  width: 38px;
+  margin: 0 auto 30px;
+  display: block;
+}
+
+/* remove paddings dos menus no modo fechado */
+.sidebar.close .menu,
+.sidebar.close .logout {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ================================== CAMPOS DE ATUALZIAÇÃO DO USUARIO ================================== */
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.visualizacao label {
+  margin-top: 100px;
+  margin-left: 440px;
+  display: block;
+  font-weight: bold;
+  color: #2f2f2f;
+}
+
+.visualizacao select {
+  margin-left: 440px;
+  padding: 8px;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.botoes .btn {
+  background-color: #b52129;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.botoes .btn i {
+  margin-right: 5px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.form-container {
+  background-color: white;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.linha {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.campo {
+  flex: 1;
+  margin-right: 10px;
+  min-width: 150px;
+}
+
+.campo.grande {
+  flex: 2;
+}
+
+.campo label {
+  display: block;
+  background-color: #999;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
 }
