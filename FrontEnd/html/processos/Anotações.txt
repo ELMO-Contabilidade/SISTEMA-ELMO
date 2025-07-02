@@ -1,0 +1,38 @@
+<section class="top-actions">
+  <div class="container-acoes">
+    <div class="visualizacao">
+      <label for="visualizacao">SELECIONE A VISUALIZAÇÃO</label>
+      <select id="visualizacao">
+        <option>SOLICITAÇÃO</option>
+      </select>
+    </div>
+    <div class="botoes">
+       <button class="btn vermelha"><i class="fa fa-floppy-disk"></i> REGISTRAR</button>
+       <button class="btn vermelha"><i class="fa fa-magnifying-glass"></i> PESQUISAR</button>
+       <button class="btn vermelha"><i class="fa fa-pen"></i> ATUALIZAR</button>
+    </div>
+  </div>
+</section>
+
+
+  <main>
+    <div class="form-container">
+      <div class="linha">
+        <div  class="campo"><label>ID</label><input type="text"></div>
+        <div  class="campo"><label>DATA</label><input type="date"></div>
+        <div  class="campo"><label>EMAIL</label><input type="email"></div>
+        <div  class="campo"><label>URGENCIA</label><select><option>Alta</option></select></div>
+      </div>
+      <div class="linha">
+        <div class="campo grande"><label>DESCRIÇÃO</label><input type="text"></div>
+        <div class="campo"><label>STATUS</label><select><option>Em análise</option></select></div>
+      </div>
+      <div class="linha">
+        <div class="campo"><label>PAINEL</label><input type="text"></div>
+        <div class="campo grande"><label>OBSERVAÇÃO</label><textarea rows="4"></textarea></div>
+      </div>
+      <div class="linha">
+        <div class="campo"><label>CONCLUSÃO</label><input type="date" value=""></div>
+      </div>
+    </div>
+  </main>
